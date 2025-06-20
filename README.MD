@@ -160,4 +160,4 @@ footer{
 
 ```
 
-                                                                                      @2025 fabian Riwi
+                                               @2025 fabian Riwi
