@@ -5,7 +5,7 @@ console.log("Bienvenido al sistema interactivo de fabian!")
 let continuar = true;
 let ingresarNombre = "";
 
-// ciclo while para validar que no deje vacio el prompt.
+// ciclo while para validar que no deje vacio el prompt y el usuario quiera cancelar la operacion
 
 while (ingresarNombre === "" || ingresarNombre === null) {
     ingresarNombre = prompt("Por favor, ingresa tu nombre:");
