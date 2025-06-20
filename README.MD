@@ -20,29 +20,144 @@ Este es un programa interactivo simple desarrollado en JavaScript que permite al
 3. Ingresa tu edad cuando se te solicite.
 4. Recibirás un mensaje personalizado según tu edad.
 
-## Código Ejemplo
+## Código Ejemplo: javascript
 ```javascript
-let continuar = true;
-let ingresarNombre = "";
+function StarProgram() {
 
-while (ingresarNombre === "" || ingresarNombre === null) {
-    ingresarNombre = prompt("Por favor, ingresa tu nombre:");
-    if (ingresarNombre === null) {
-        alert("Operación cancelada.");
-        continuar = false;
-        break;
+    
+    // Start program
+    
+    console.log("Welcome to our interactive Fabian system.")
+    
+    // Let's enter the data
+    
+    let Next = true;
+    let youName = "";
+    
+    // Loop to validate name
+    while (Next) {
+        youName = prompt("Enter your name: ");
+        if (youName === null) {
+            alert("Canceled operation.") ;
+            Next = false;
+            break;
+        }
+        
+        // Validate that the name only has letters (no numbers, special characters, or spaces)
+        if (!/^[a-zA-Z]+$/.test(youName)) {
+            alert("Error, Please enter a valid name..");
+            continue;
+        }
+        
+        // Validate that it is not empty 
+        if (youName.trim() === "") {
+            alert("Error, Name cannot be empty.");
+            continue;
+        }
+        break; 
+    }
+    
+    if (Next) {
+        let age = "";
+        // Cycle to validate age
+        while (Next) {
+            age = prompt("Please enter your age: ");
+            if (age === null) {
+                alert("Canceled Operation.");
+                Next = false;
+                break;
+            }
+            
+            // Validate that the input is only numbers (no letters or other characters)
+            if (!/^\d+$/.test(age)) {
+                alert("Error, Please enter a valid age (only positive integers.)) ")
+                continue;
+            }
+            
+            // Convert age to number
+            age = parseInt(age);
+            
+            // Validate that it is a number and not Nan
+            if (isNaN(age)) {
+                alert("Error, Please enter a valid numeric age.");
+            } else {
+                break;
+            }
+        }
+        
+        // validation and message
+        if (Next) {
+            if (age > 17) {
+                alert(`Hello, ${youName}, You're of legal age 🧔, keep coding and get ready to be one of the best in programming 🔥💻`);
+            } else {
+                alert(`Hello, ${youName}, You are a minor 🧒, but you can continue coding and learning much more 💻⚡`);
+            }
+        }
     }
 }
 
-if (continuar) {
-    let edad = prompt("Por favor, ingresa tu edad:");
-    edad = parseInt(edad);
+```
+## Código Ejemplo: html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive system</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <h1>Sis-Int-Fa</h1>
+    <p>Click and try our interactive system to validate your age..</p>
+    
+    <button class="boton" onclick="StarProgram()">Start</button>
 
-    if (isNaN(edad)) {
-        console.error("Error, por favor ingresa una edad valida numerica.");
-    } else if (edad > 17) {
-        alert(`Hola, ${ingresarNombre} eres mayor de edad🧔, sigue codificando y preparate para ser de los mejores en la programacion🔥💻`);
-    } else {
-        alert(`Hola, ${ingresarNombre} eres menor de edad🧒, pero puedes seguir codificando y aprendiendo mucho mas 💻⚡`);
-    }
+    <footer>SisIntFa js</footer>
+    <script src="./sistema_interactivo.js"></script>
+    </body>
+</html> 
+
+
+
+```
+## Código Ejemplo: Css
+```Css
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(179, 193, 170, 0.813);
+    color: rgba(35, 35, 35, 0.914);
+    text-align: center;
+    padding: 15%;
 }
+
+h1 {
+    color: rgba(40, 40, 40, 0.853);
+}
+
+button {
+    background-color: black;
+    color: rgba(144, 156, 156, 0.914);
+    padding: 10px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover{
+    background-color: brown;
+}
+
+footer{
+    margin-top: 150px;
+    font-size: 20px;
+    color: black;
+}
+
+
+```
+
+                @2025 fabian Riwi
