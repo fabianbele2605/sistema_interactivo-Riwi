@@ -1,33 +1,69 @@
-// Inicializacion de programa
-console.log("Bienvenido al sistema interactivo de fabian!")
+// Start program
 
-// vamos a ingresar los datos
-let continuar = true;
-let ingresarNombre = "";
+console.log("Welcome to our interactive Fabian system.")
 
-// ciclo while para validar que no deje vacio el prompt y el usuario quiera cancelar la operacion
+// Let's enter the data
 
-while (ingresarNombre === "" || ingresarNombre === null) {
-    ingresarNombre = prompt("Por favor, ingresa tu nombre:");
-    if (ingresarNombre === null) {
-        alert("Operación cancelada.");
-        continuar = false;
-        break; 
+let Next = true;
+let youName = "";
+
+// Loop to validate name
+while (Next) {
+    youName = prompt("Enter your name: ");
+    if (youName === null) {
+        alert("Canceled operation.") ;
+        Next = false;
+        break;
     }
+
+    // Validate that the name only has letters (no numbers, special characters, or spaces)
+    if (!/^[a-zA-Z]+$/.test(youName)) {
+        alert("Error, Please enter a valid name..");
+        continue;
+    }
+
+    // Validate that it is not empty 
+    if (youName.trim() === "") {
+        alert("Error, Name cannot be empty.");
+        continue;
+    }
+    break; 
 }
 
-if (continuar) {
-    let edad = prompt("Por favor, ingresa tu edad:");
+if (Next) {
+    let age = "";
+    // Cycle to validate age
+    while (Next) {
+        age = prompt("Please enter your age: ");
+        if (age === null) {
+            alert("Canceled Operation.");
+            Next = false;
+            break;
+        }
 
-    // convertir edad a numero
-    edad = parseInt(edad);
+        // Validate that the input is only numbers (no letters or other characters)
+        if (!/^\d+$/.test(age)) {
+            alert("Error, Please enter a valid age (only positive integers.)) ")
+            continue;
+        }
 
-    // validacion y mensaje 
-    if (isNaN(edad)) {
-        console.error("Error, por favor ingresa una edad valida numerica.");
-    } else if (edad > 17) {
-        alert(`Hola, ${ingresarNombre} eres mayor de edad🧔, sigue codificando y preparate para ser de los mejores en la programacion🔥💻`);
-    } else {
-        alert(`Hola, ${ingresarNombre} eres menor de edad🧒, pero puedes seguir codificando y aprendiendo mucho mas 💻⚡`);
+        // Convert age to number
+        age = parseInt(age);
+
+        // Validate that it is a number and not Nan
+        if (isNaN(age)) {
+            alert("Error, Please enter a valid numeric age.");
+        } else {
+            break;
+        }
     }
+
+    // validation and message
+        if (Next) {
+            if (age > 17) {
+                alert(`Hello, ${youName}, You're of legal age 🧔, keep coding and get ready to be one of the best in programming 🔥💻`);
+            } else {
+                alert(`Hello, ${youName}, You are a minor 🧒, but you can continue coding and learning much more 💻⚡`);
+            }
+        }
 }
